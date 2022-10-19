@@ -129,7 +129,7 @@ impl<R: Round, const B: Word> FBig<R, B> {
         Self { repr, context }
     }
 
-    const fn zero() -> Self {
+    pub const fn zero() -> Self {
         Self::new(Repr::zero(), Context::new(0))
     }
     /// [FBig] with value 0 and unlimited precision
@@ -137,7 +137,7 @@ impl<R: Round, const B: Word> FBig<R, B> {
     /// To test if the float number is zero, use `self.repr().is_zero()`.
     pub const ZERO: Self = Self::zero();
 
-    const fn one() -> Self {
+    pub const fn one() -> Self {
         Self::new(Repr::one(), Context::new(0))
     }
     /// [FBig] with value 1 and unlimited precision
@@ -145,7 +145,7 @@ impl<R: Round, const B: Word> FBig<R, B> {
     /// To test if the float number is one, use `self.repr().one()`.
     pub const ONE: Self = Self::one();
 
-    const fn neg_one() -> Self {
+    pub const fn neg_one() -> Self {
         Self::new(Repr::neg_one(), Context::new(0))
     }
     /// [FBig] with value -1 and unlimited precision

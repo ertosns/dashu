@@ -27,8 +27,15 @@ impl<R: Round, const B: Word> FBig<R, B> {
     }
 
     #[inline]
-    pub fn pow(&self, exp: FBig<R,B>) -> FBig<R, B> {
-        (exp*self.ln()).exp()
+    pub fn powf(&self, exp: FBig<R,B>) -> FBig<R, B> {
+        if self.repr().is_zero() {
+            FBig::<R,B>::zero()
+        } else if self.clone() > FBig::<R,B>::zero() {
+            (exp*self.ln()).exp()
+        } else {
+            let base = self.clone() * FBig::<R,B>::neg_one();
+            FBig::<R,B>::neg_one() * (exp*base.ln()).exp()
+        }
     }
 
     /// Calculate the exponential function (`eˣ`) on the floating point number.

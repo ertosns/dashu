@@ -12,7 +12,7 @@ fn pow_test() {
         .unwrap()
         .with_precision(4)
         .value();
-    let res = base.pow(pow);
+    let res = base.powf(pow);
     let epsilon = Float10::from_str_native("0.004")
         .unwrap()
         .with_precision(4)
